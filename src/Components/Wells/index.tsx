@@ -41,40 +41,39 @@ export const WellsTable = () => {
     {
       title: "ID",
       dataIndex: "id",
-      key: "id",
+      key: "0",
     },
     {
       title: "Название скважины",
       dataIndex: "name",
-      key: "name",
+      key: "1",
       ...getColumnSearchProps("name"),
     },
     {
       title: "Месторождение",
       dataIndex: "field",
-      key: "field",
+      key: "2",
     },
     {
       title: "Статус",
       dataIndex: "status",
-      key: "status",
+      key: "3",
       filters: statuses,
       onFilter: (value, record) => record.status.indexOf(value as string) === 0,
     },
     {
       title: "Дата последнего отчёта",
       dataIndex: "lastReportDate",
-      key: "lastReportDate",
+      key: "4",
     },
     {
       title: "Action",
       dataIndex: "",
-      key: "x",
+      key: "5",
       render: (_, well) => (
         <Button
           onClick={() => {
-            console.log(well);
-            navigate(`/reports/${well.lastReportDate}`);
+            navigate(`/reports/${well.id}`);
           }}
         >
           Посмотреть отчет
@@ -83,5 +82,5 @@ export const WellsTable = () => {
     },
   ];
 
-  return <Table columns={columns} dataSource={wells} rowKey="id" />;
+  return <Table columns={columns} dataSource={wells} />;
 };
