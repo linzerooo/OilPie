@@ -2,38 +2,36 @@ import { Button, Table } from "antd";
 import type { TableColumnsType } from "antd";
 import { useTableSearch } from "../Helpers/getSearchProps";
 import { useNavigate } from "react-router-dom";
+import { wells } from "./mockWells";
+
+const statuses = [
+  {
+    text: "активна",
+    value: "активна",
+  },
+  {
+    text: "пассивна",
+    value: "пассивна",
+  },
+  {
+    text: "законсервирована",
+    value: "законсервирована",
+  },
+  {
+    text: "авария",
+    value: "авария",
+  },
+]
+
+type StatusValue = typeof statuses[number]['value'];
 
 interface Well {
   id: number;
   name: string;
   field: string;
-  status: string;
+  status: StatusValue;
   lastReportDate: string;
 }
-
-const WELLS_DATA: Well[] = [
-  {
-    id: 1,
-    name: "Скважина №101",
-    field: "Южное месторождение",
-    status: "активна",
-    lastReportDate: "2024-04-15",
-  },
-  {
-    id: 2,
-    name: "Скважина №202",
-    field: "Северное месторождение",
-    status: "законсервирована",
-    lastReportDate: "2023-12-01",
-  },
-  {
-    id: 3,
-    name: "Скважина №303",
-    field: "Восточное месторождение",
-    status: "авария",
-    lastReportDate: "2024-05-10",
-  },
-];
 
 export const WellsTable = () => {
   const { getColumnSearchProps } = useTableSearch();
@@ -60,6 +58,8 @@ export const WellsTable = () => {
       title: "Статус",
       dataIndex: "status",
       key: "status",
+      filters: statuses,
+      onFilter: (value, record) => record.status.indexOf(value as string) === 0,
     },
     {
       title: "Дата последнего отчёта",
@@ -73,7 +73,7 @@ export const WellsTable = () => {
       render: (_, well) => (
         <Button
           onClick={() => {
-            console.log(well)
+            console.log(well);
             navigate(`/reports/${well.lastReportDate}`);
           }}
         >
@@ -83,5 +83,5 @@ export const WellsTable = () => {
     },
   ];
 
-  return <Table columns={columns} dataSource={WELLS_DATA} rowKey="id" />;
+  return <Table columns={columns} dataSource={wells} rowKey="id" />;
 };
