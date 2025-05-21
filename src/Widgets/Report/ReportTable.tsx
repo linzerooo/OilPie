@@ -9,7 +9,8 @@ import { ReportModal } from "../../Features/Report/ReportModal";
 
 export const ReportTable = () => {
   const { id } = useParams<{ id: string }>();
-  const reports = useSelector((state: RootState) => state.reports[id || ""]) || [];
+  const reports =
+    useSelector((state: RootState) => state.reports[id || ""]) || [];
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -21,25 +22,37 @@ export const ReportTable = () => {
   ];
 
   const exportToExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(reports)
-    const workbook = XLSX.utils.book_new()
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Отчёты')
-   
-    const excelBuffer = XLSX.write(workbook, {bookType: 'xlsx', type: "array"})
-    const file = new Blob([excelBuffer], { type: 'application/octet-stream' })
-    saveAs(file, `Отчёт скважина №${id}.xlsx`)
-  }
+    const worksheet = XLSX.utils.json_to_sheet(reports);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Отчёты");
+
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
+    const file = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(file, `Отчёт скважина №${id}.xlsx`);
+  };
 
   return (
     <>
-      <Button onClick={() => setModalOpen(true)} style={{ marginBottom: 16}}>
+      <Table
+        columns={columns}
+        dataSource={reports}
+        rowKey={(r) => r.date + r.engineer}
+      />
+      <ReportModal
+        wellId={id || ""}
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
+      <Button
+        onClick={() => setModalOpen(true)}
+        style={{ marginTop: 26, marginRight: 25 }}
+      >
         Добавить отчет
       </Button>
-      <Button onClick={exportToExcel}> 
-        Экспорт в Excel
-      </Button>
-      <Table columns={columns} dataSource={reports} rowKey={(r) => r.date + r.engineer} />
-      <ReportModal wellId={id || "-1"} open={modalOpen} onClose={() => setModalOpen(false)} />
+      <Button onClick={exportToExcel}>Экспорт в Excel</Button>
     </>
   );
 };

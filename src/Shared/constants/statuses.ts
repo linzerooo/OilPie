@@ -2,6 +2,7 @@ export const statuses = [
   {
     text: "активна",
     value: "активна",
+    color: "green",
   },
   {
     text: "пассивна",
@@ -14,5 +15,6 @@ export const statuses = [
   {
     text: "авария",
     value: "авария",
+    color: "red",
   },
 ]

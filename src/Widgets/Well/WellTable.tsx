@@ -1,4 +1,4 @@
-import { Button, Table } from "antd";
+import { Button, Table, Tag } from "antd";
 import type { TableColumnsType } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useTableSearch } from "../../Features/Well/getSearchProps";
@@ -33,6 +33,10 @@ export const WellsTable = () => {
       key: "3",
       filters: statuses,
       onFilter: (value, record) => record.status.indexOf(value as string) === 0,
+      render: (val: string) => {
+        const status = statuses.find((s) => s.value === val);
+        return <Tag color={status?.color || "default"}>{val.toUpperCase()}</Tag>;
+      },
     },
     {
       title: "Дата последнего отчёта",

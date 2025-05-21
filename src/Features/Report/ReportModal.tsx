@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const ReportModal: React.FC<Props> = ({ wellId, open, onClose }) => {
-const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const [form] = Form.useForm();
 
   const handleOk = () => {
@@ -31,7 +31,12 @@ const dispatch = useAppDispatch();
   };
 
   return (
-    <Modal title="Добавить отчет" open={open} onOk={handleOk} onCancel={onClose}>
+    <Modal
+      title="Добавить отчет"
+      open={open}
+      onOk={handleOk}
+      onCancel={onClose}
+    >
       <Form layout="vertical" form={form}>
         <Form.Item name="date" label="Дата" rules={[{ required: true }]}>
           <DatePicker format="YYYY-MM-DD" />
@@ -39,7 +44,11 @@ const dispatch = useAppDispatch();
         <Form.Item name="engineer" label="Инженер" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item name="depth" label="Глубина бурения (м)" rules={[{ required: true }]}>
+        <Form.Item
+          name="depth"
+          label="Глубина бурения (м)"
+          rules={[{ required: true }]}
+        >
           <InputNumber min={0} />
         </Form.Item>
         <Form.Item name="issues" label="Проблемы">
