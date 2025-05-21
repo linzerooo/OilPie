@@ -1,5 +1,5 @@
 // mockReports.ts
-export const reports = {
+export const mockReports = {
   1: [
     {
       date: "2024-04-15",

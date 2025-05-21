@@ -8,9 +8,6 @@ function App() {
     <Router>
       <nav>
         <Link to="/">Главная</Link>
-        <Link to="/reports" style={{ marginLeft: "10px" }}>
-          Отчеты
-        </Link>
       </nav>
       <Routes>
         <Route path="/" element={<WellsTable />} />
