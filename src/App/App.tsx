@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
-import { WellsTable } from "./Components/Wells";
-import { Reports } from "./Components/Reports";
+import { WellsPage } from "../Pages/WellsPage";
+import { Reports } from "../Pages/Reports";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <Link to="/">Главная</Link>
       </nav>
       <Routes>
-        <Route path="/" element={<WellsTable />} />
+        <Route path="/" element={<WellsPage />} />
         <Route path="/reports/:id" element={<Reports />} />
       </Routes>
     </Router>

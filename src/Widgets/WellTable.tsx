@@ -1,8 +1,8 @@
 import { Button, Table } from "antd";
 import type { TableColumnsType } from "antd";
-import { useTableSearch } from "../Helpers/getSearchProps";
 import { useNavigate } from "react-router-dom";
-import { wells } from "./mockWells";
+import { useTableSearch } from "../Pages/Helpers/getSearchProps";
+import { mockWells } from "../Pages/WellsPage/mockWells";
 
 const statuses = [
   {
@@ -82,5 +82,5 @@ export const WellsTable = () => {
     },
   ];
 
-  return <Table columns={columns} dataSource={wells} />;
+  return <Table columns={columns} dataSource={mockWells} />;
 };

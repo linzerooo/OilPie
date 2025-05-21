@@ -1,5 +1,4 @@
-// mockWells.ts
-export const wells = [
+export const mockWells = [
   {
     id: 1,
     name: "Скважина №101",
