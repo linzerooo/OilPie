@@ -1,8 +1,8 @@
 import { Button, Table } from "antd";
 import type { TableColumnsType } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useTableSearch } from "../../Pages/Helpers/getSearchProps";
-import { mockWells } from "../../Pages/WellsPage/mockWells";
+import { useTableSearch } from "../../Features/Well/getSearchProps";
+import { mockWells } from "./mockWells";
 
 const statuses = [
   {

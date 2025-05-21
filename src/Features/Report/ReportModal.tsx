@@ -1,6 +1,6 @@
 import { Modal, Form, Input, InputNumber, DatePicker, message } from "antd";
-import { addReport } from "../../Helpers/reportsSlice";
-import { useAppDispatch } from "../../Helpers/hooks";
+import { addReport } from "../../Entities/Report/reportsSlice";
+import { useAppDispatch } from "./hooks";
 import { useState } from "react";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   onClose: () => void;
 }
 
-export const AddReportModal: React.FC<Props> = ({ wellId, open, onClose }) => {
+export const ReportModal: React.FC<Props> = ({ wellId, open, onClose }) => {
   const dispatch = useAppDispatch();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);

@@ -1,15 +1,8 @@
 // features/reports/reportsSlice.ts
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { mockReports } from "../../Widgets/Report/mockReports";
+import type { ReportsState, Report } from "./types";
 
-interface Report {
-  date: string;
-  engineer: string;
-  depth: number;
-  issues: string;
-}
-
-type ReportsState = Record<string, Report[]>;
 
 const initialState: ReportsState = mockReports;
 

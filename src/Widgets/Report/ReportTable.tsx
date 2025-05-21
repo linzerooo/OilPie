@@ -2,10 +2,10 @@ import { Button, Table } from "antd";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import type { RootState } from "../../Pages/Helpers/store";
+import type { RootState } from "../../Entities/Report/store";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
-import { AddReportModal } from "../../Pages/ReportPage/ReportModal";
+import { ReportModal } from "../../Features/Report/ReportModal";
 
 export const ReportTable = () => {
   const { id } = useParams<{ id: string }>();
@@ -27,7 +27,7 @@ export const ReportTable = () => {
    
     const excelBuffer = XLSX.write(workbook, {bookType: 'xlsx', type: "array"})
     const file = new Blob([excelBuffer], { type: 'application/octet-stream' })
-    saveAs(file, `Отчёт скважина №${id}.xlsx}`)
+    saveAs(file, `Отчёт скважина №${id}.xlsx`)
 
   }
 
@@ -40,7 +40,7 @@ export const ReportTable = () => {
         Экспорт в Excel
       </Button>
       <Table columns={columns} dataSource={reports} rowKey={(r) => r.date + r.engineer} />
-      <AddReportModal wellId={id || "0"} open={modalOpen} onClose={() => setModalOpen(false)} />
+      <ReportModal wellId={id || "0"} open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 };
