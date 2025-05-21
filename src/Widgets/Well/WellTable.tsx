@@ -5,12 +5,13 @@ import { useTableSearch } from "../../Features/Well/getSearchProps";
 import { mockWells } from "../../Entities/Well/mockWells";
 import { statuses } from "../../Shared/constants/statuses";
 import type { Well } from "../../Entities/Well/types";
+import { useMemo } from "react"; // Добавляем импорт useMemo
 
 export const WellsTable = () => {
   const { getColumnSearchProps } = useTableSearch();
   const navigate = useNavigate();
 
-  const columns: TableColumnsType<Well> = [
+  const columns: TableColumnsType<Well> = useMemo(() => [
     {
       title: "ID",
       dataIndex: "id",
@@ -57,7 +58,7 @@ export const WellsTable = () => {
         </Button>
       ),
     },
-  ];
+  ], [getColumnSearchProps, navigate]);
 
   return <Table columns={columns} dataSource={mockWells} />;
 };
