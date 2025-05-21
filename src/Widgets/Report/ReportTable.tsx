@@ -23,18 +23,8 @@ export const ReportTable = () => {
     []
   );
 
-  function exportToExcel() {
+  const exportToExcel = () => {
     try {
-      if (!id) {
-        throw new Error("Не указан ID скважины");
-      }
-
-      if (reports.length === 0) {
-        message.warning("Нет данных для экспорта");
-        return;
-      }
-
-      // подготовка данных с заголовками
       const data = [
         ["Дата", "Инженер", "Глубина бурения (м)", "Проблемы"], // Заголовки
         ...reports.map((report) => [
@@ -67,7 +57,6 @@ export const ReportTable = () => {
         `${wellName}_отчеты_${new Date().toISOString().slice(0, 10)}.xlsx`
       );
 
-      message.success("Данные успешно экспортированы в Excel");
     } catch (error) {
       console.error("Ошибка при экспорте:", error);
       message.error("Не удалось экспортировать данные");
