@@ -38,16 +38,22 @@ export const ReportModal: React.FC<Props> = ({ wellId, open, onClose }) => {
       onCancel={onClose}
     >
       <Form layout="vertical" form={form}>
-        <Form.Item name="date" label="Дата" rules={[{ required: true }]}>
-          <DatePicker format="YYYY-MM-DD" />
+        <Form.Item
+          name="date"
+          label="Дата"
+          rules={[
+            { required: true, message: "Пожалуйста, укажите дату" },
+          ]}
+        >
+          <DatePicker format="YYYY-MM-DD" placeholder="ГГГГ-ММ-ДД" />
         </Form.Item>
-        <Form.Item name="engineer" label="Инженер" rules={[{ required: true }]}>
+        <Form.Item name="engineer" label="Инженер" rules={[{ required: true, message: "Пожалуйста, укажите ФИО инженера"  }]}>
           <Input />
         </Form.Item>
         <Form.Item
           name="depth"
           label="Глубина бурения (м)"
-          rules={[{ required: true }]}
+          rules={[{ required: true, message: "Пожалуйста, укажите глубину бурения"  }]}
         >
           <InputNumber min={0} />
         </Form.Item>
