@@ -28,7 +28,6 @@ export const ReportTable = () => {
     const excelBuffer = XLSX.write(workbook, {bookType: 'xlsx', type: "array"})
     const file = new Blob([excelBuffer], { type: 'application/octet-stream' })
     saveAs(file, `Отчёт скважина №${id}.xlsx`)
-
   }
 
   return (
@@ -40,7 +39,7 @@ export const ReportTable = () => {
         Экспорт в Excel
       </Button>
       <Table columns={columns} dataSource={reports} rowKey={(r) => r.date + r.engineer} />
-      <ReportModal wellId={id || "0"} open={modalOpen} onClose={() => setModalOpen(false)} />
+      <ReportModal wellId={id || "-1"} open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 };

@@ -1,6 +1,6 @@
 // features/reports/reportsSlice.ts
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { mockReports } from "../../Widgets/Report/mockReports";
+import { mockReports } from "./mockReports";
 import type { ReportsState, Report } from "./types";
 
 

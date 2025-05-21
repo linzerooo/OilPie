@@ -2,36 +2,9 @@ import { Button, Table } from "antd";
 import type { TableColumnsType } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useTableSearch } from "../../Features/Well/getSearchProps";
-import { mockWells } from "./mockWells";
-
-const statuses = [
-  {
-    text: "активна",
-    value: "активна",
-  },
-  {
-    text: "пассивна",
-    value: "пассивна",
-  },
-  {
-    text: "законсервирована",
-    value: "законсервирована",
-  },
-  {
-    text: "авария",
-    value: "авария",
-  },
-]
-
-type StatusValue = typeof statuses[number]['value'];
-
-interface Well {
-  id: number;
-  name: string;
-  field: string;
-  status: StatusValue;
-  lastReportDate: string;
-}
+import { mockWells } from "../../Entities/Well/mockWells";
+import { statuses } from "../../Shared/constants/statuses";
+import type { Well } from "../../Entities/Well/types";
 
 export const WellsTable = () => {
   const { getColumnSearchProps } = useTableSearch();

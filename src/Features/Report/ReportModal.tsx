@@ -1,7 +1,6 @@
-import { Modal, Form, Input, InputNumber, DatePicker, message } from "antd";
+import { Modal, Form, Input, InputNumber, DatePicker } from "antd";
 import { addReport } from "../../Entities/Report/reportsSlice";
 import { useAppDispatch } from "./hooks";
-import { useState } from "react";
 
 interface Props {
   wellId: string;
@@ -10,16 +9,12 @@ interface Props {
 }
 
 export const ReportModal: React.FC<Props> = ({ wellId, open, onClose }) => {
-  const dispatch = useAppDispatch();
+const dispatch = useAppDispatch();
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
 
-  const handleOk = async () => {
-    try {
-      setLoading(true);
-      const values = await form.validateFields();
-      
-      await dispatch(
+  const handleOk = () => {
+    form.validateFields().then((values) => {
+      dispatch(
         addReport({
           wellId,
           report: {
@@ -30,55 +25,25 @@ export const ReportModal: React.FC<Props> = ({ wellId, open, onClose }) => {
           },
         })
       );
-
-      message.success("Отчёт успешно добавлен!");
       form.resetFields();
       onClose();
-    } catch (error) {
-      console.error("Ошибка при добавлении отчёта:", error);
-      message.error("Не удалось добавить отчёт. Пожалуйста, попробуйте снова.");
-    } finally {
-      setLoading(false);
-    }
+    });
   };
 
   return (
-    <Modal
-      title="Добавить отчет"
-      open={open}
-      onOk={handleOk}
-      onCancel={onClose}
-      confirmLoading={loading}
-      okText="Добавить"
-      cancelText="Отмена"
-    >
+    <Modal title="Добавить отчет" open={open} onOk={handleOk} onCancel={onClose}>
       <Form layout="vertical" form={form}>
-        <Form.Item 
-          name="date" 
-          label="Дата" 
-          rules={[{ required: true, message: 'Пожалуйста, укажите дату' }]}
-        >
-          <DatePicker format="YYYY-MM-DD" style={{ width: '100%' }} />
+        <Form.Item name="date" label="Дата" rules={[{ required: true }]}>
+          <DatePicker format="YYYY-MM-DD" />
         </Form.Item>
-        <Form.Item 
-          name="engineer" 
-          label="Инженер" 
-          rules={[{ required: true, message: 'Пожалуйста, укажите инженера' }]}
-        >
-          <Input placeholder="ФИО инженера" />
+        <Form.Item name="engineer" label="Инженер" rules={[{ required: true }]}>
+          <Input />
         </Form.Item>
-        <Form.Item 
-          name="depth" 
-          label="Глубина бурения (м)" 
-          rules={[
-            { required: true, message: 'Пожалуйста, укажите глубину' },
-            { type: 'number', min: 0, message: 'Глубина не может быть отрицательной' }
-          ]}
-        >
-          <InputNumber min={0} style={{ width: '100%' }} placeholder="В метрах" />
+        <Form.Item name="depth" label="Глубина бурения (м)" rules={[{ required: true }]}>
+          <InputNumber min={0} />
         </Form.Item>
         <Form.Item name="issues" label="Проблемы">
-          <Input.TextArea rows={4} placeholder="Опишите обнаруженные проблемы" />
+          <Input.TextArea />
         </Form.Item>
       </Form>
     </Modal>
