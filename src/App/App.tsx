@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import { WellsPage } from "../Pages/WellsPage";
-import { Reports } from "../Pages/Reports";
+import { ReportPage } from "../Pages/ReportPage";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<WellsPage />} />
-        <Route path="/reports/:id" element={<Reports />} />
+        <Route path="/reports/:id" element={<ReportPage />} />
       </Routes>
     </Router>
   );

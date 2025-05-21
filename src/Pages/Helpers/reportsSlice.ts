@@ -1,6 +1,6 @@
 // features/reports/reportsSlice.ts
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { mockReports } from "../Reports/mockReports";
+import { mockReports } from "../../Widgets/Report/mockReports";
 
 interface Report {
   date: string;

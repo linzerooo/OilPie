@@ -2,12 +2,12 @@ import { Button, Table } from "antd";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { AddReportModal } from "./ReportModal";
-import type { RootState } from "../Helpers/store";
+import type { RootState } from "../../Pages/Helpers/store";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import { AddReportModal } from "../../Pages/ReportPage/ReportModal";
 
-export const Reports = () => {
+export const ReportTable = () => {
   const { id } = useParams<{ id: string }>();
   const reports = useSelector((state: RootState) => state.reports[id || ""]) || [];
 

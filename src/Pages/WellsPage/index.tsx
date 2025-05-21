@@ -1,4 +1,4 @@
-import { WellsTable } from "../../Widgets/WellTable";
+import { WellsTable } from "../../Widgets/Well/WellTable";
 
 export const WellsPage = () => {
   return <WellsTable />;
