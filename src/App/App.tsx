@@ -10,7 +10,7 @@ function App() {
         <Link to="/">Главная</Link>
       </nav>
       <Routes>
-        <Route path="/" element={<WellsPage />} />
+        <Route path="/OilPie/" element={<WellsPage />} />
         <Route path="/reports/:id" element={<ReportPage />} />
       </Routes>
     </Router>
