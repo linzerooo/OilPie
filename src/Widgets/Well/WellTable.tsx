@@ -1,7 +1,7 @@
 import { Button, Table, Tag } from "antd";
 import type { TableColumnsType } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useTableSearch } from "../../Features/Well/getSearchProps";
+import { useTableSearch } from "../../Shared/hooks/getSearchProps";
 import { mockWells } from "../../Entities/Well/mockWells";
 import { statuses } from "../../Shared/constants/statuses";
 import type { Well } from "../../Entities/Well/types";
