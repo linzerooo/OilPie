@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <nav>
-        <Link to="/">Главная</Link>
+        <Link to="/OilPie/">Главная</Link>
       </nav>
       <Routes>
         <Route path="/OilPie/" element={<WellsPage />} />
