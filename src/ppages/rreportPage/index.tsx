@@ -1,4 +1,4 @@
-import { ReportTable } from "@widgets/report/reportTable"
+import { ReportTable } from "wwidgets/rreport/rreportTable"
 
 export const ReportPage = () => {
     return <ReportTable />
