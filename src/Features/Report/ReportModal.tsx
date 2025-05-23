@@ -1,5 +1,5 @@
 import { Modal, Form, Input, InputNumber, DatePicker } from "antd";
-import { addReport } from "../../entities/report/reportsSlice";
+import { addReport } from "@entities/report/reportsSlice";
 import { useAppDispatch } from "./hooks";
 
 interface Props {

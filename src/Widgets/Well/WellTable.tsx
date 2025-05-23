@@ -1,10 +1,10 @@
 import { Button, Table, Tag } from "antd";
 import type { TableColumnsType } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useTableSearch } from "../../shared/hooks/getSearchProps";
-import { mockWells } from "../../entities/well/mockWells";
-import { statuses } from "../../shared/constants/statuses";
-import type { Well } from "../../entities/well/types";
+import { useTableSearch } from "@shared/hooks/getSearchProps";
+import { mockWells } from "@entities/well/mockWells";
+import { statuses } from "@shared/constants/statuses";
+import type { Well } from "@entities/well/types";
 import { useMemo } from "react"; // Добавляем импорт useMemo
 
 export const WellsTable = () => {

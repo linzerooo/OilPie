@@ -2,9 +2,9 @@ import { Button, message, Table } from "antd";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useMemo, useState } from "react";
-import type { RootState } from "../../entities/report/store";
+import type { RootState } from "@entities/report/store";
 import * as XLSX from "xlsx";
-import { ReportModal } from "../../features/report/reportModal";
+import { ReportModal } from "@features/report/reportModal";
 
 export const ReportTable = () => {
   const { id } = useParams<{ id: string }>();
