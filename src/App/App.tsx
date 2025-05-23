@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import "./App.css";
-import { WellsPage } from "../Pages/WellsPage";
-import { ReportPage } from "../Pages/ReportPage";
+import "./app.css";
+import { WellsPage } from "@pages/wellsPage";
+import { ReportPage } from "@pages/reportPage";
 
 function App() {
   return (

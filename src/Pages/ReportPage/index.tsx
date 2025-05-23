@@ -1,4 +1,4 @@
-import { ReportTable } from "../../Widgets/Report/ReportTable"
+import { ReportTable } from "../../widgets/report/reportTable"
 
 export const ReportPage = () => {
     return <ReportTable />

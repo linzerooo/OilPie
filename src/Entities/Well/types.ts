@@ -1,4 +1,4 @@
-import type { statuses } from "../../Shared/constants/statuses";
+import type { statuses } from "../../shared/constants/statuses";
 
 export type StatusValue = typeof statuses[number]['value'];
 
